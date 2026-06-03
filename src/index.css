@@ -1,0 +1,250 @@
+/* ============================================================
+   Sistema de diseño — TechStore
+   Paleta, tipografía y componentes visuales personalizados.
+   Bootstrap aporta el layout; aquí afinamos la identidad visual.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* Paleta */
+  --ts-primary: #4f46e5;       /* indigo */
+  --ts-primary-dark: #4338ca;
+  --ts-accent: #ec4899;        /* pink */
+  --ts-dark: #0f172a;          /* slate-900 */
+  --ts-muted: #64748b;
+  --ts-bg: #f8fafc;
+  --ts-card: #ffffff;
+  --ts-radius: 16px;
+  --ts-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+  --ts-shadow-hover: 0 16px 40px rgba(79, 70, 229, 0.16);
+}
+
+/* ---- Base ---- */
+body {
+  margin: 0;
+  background-color: var(--ts-bg);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--ts-dark);
+}
+
+h1, h2, h3, h4, h5, .navbar-brand {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Sobrescribimos el color primario de Bootstrap */
+.btn-primary {
+  --bs-btn-bg: var(--ts-primary);
+  --bs-btn-border-color: var(--ts-primary);
+  --bs-btn-hover-bg: var(--ts-primary-dark);
+  --bs-btn-hover-border-color: var(--ts-primary-dark);
+  --bs-btn-active-bg: var(--ts-primary-dark);
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--ts-primary);
+  --bs-btn-border-color: var(--ts-primary);
+  --bs-btn-hover-bg: var(--ts-primary);
+  --bs-btn-hover-border-color: var(--ts-primary);
+}
+.text-primary { color: var(--ts-primary) !important; }
+.btn { border-radius: 12px; font-weight: 600; }
+
+/* ============================================================
+   NavBar
+   ============================================================ */
+.ts-navbar {
+  background: rgba(15, 23, 42, 0.85) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.ts-navbar .navbar-brand {
+  font-weight: 800;
+  font-size: 1.35rem;
+}
+.ts-navbar .brand-icon {
+  background: linear-gradient(135deg, var(--ts-primary), var(--ts-accent));
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.ts-navbar .nav-link {
+  font-weight: 500;
+  opacity: 0.85;
+}
+.ts-navbar .nav-link:hover,
+.ts-navbar .nav-link.active {
+  opacity: 1;
+}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.ts-hero {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%);
+  border-radius: 24px;
+  color: #fff;
+  padding: 3.5rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--ts-shadow);
+}
+.ts-hero::after {
+  content: '';
+  position: absolute;
+  right: -80px;
+  top: -80px;
+  width: 320px;
+  height: 320px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+}
+.ts-hero::before {
+  content: '';
+  position: absolute;
+  left: -60px;
+  bottom: -100px;
+  width: 240px;
+  height: 240px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+}
+.ts-hero h1 {
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  position: relative;
+}
+.ts-hero p { opacity: 0.92; position: relative; max-width: 540px; }
+
+/* ============================================================
+   Product cards
+   ============================================================ */
+.product-card {
+  height: 100%;
+  border: none;
+  border-radius: var(--ts-radius);
+  background: var(--ts-card);
+  box-shadow: var(--ts-shadow);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--ts-shadow-hover);
+}
+.product-card .img-wrap {
+  position: relative;
+  height: 220px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.product-card .product-img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+.product-card:hover .product-img { transform: scale(1.06); }
+
+.product-card .category-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(15, 23, 42, 0.75);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: capitalize;
+  backdrop-filter: blur(4px);
+}
+
+.title-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.8rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.price-tag {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: var(--ts-dark);
+}
+
+.rating-stars { color: #f59e0b; font-size: 0.8rem; }
+
+/* ============================================================
+   Detalle del producto
+   ============================================================ */
+.detail-img-wrap {
+  background: #fff;
+  border-radius: var(--ts-radius);
+  box-shadow: var(--ts-shadow);
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.detail-img { max-height: 380px; object-fit: contain; }
+
+.category-pill {
+  background: rgba(79, 70, 229, 0.1);
+  color: var(--ts-primary);
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+/* ============================================================
+   Cards / paneles genéricos
+   ============================================================ */
+.ts-panel {
+  border: none;
+  border-radius: var(--ts-radius);
+  box-shadow: var(--ts-shadow);
+}
+
+.qty-control .btn {
+  width: 42px;
+  border-radius: 10px;
+}
+.qty-control .qty-value {
+  font-weight: 700;
+  font-size: 1.1rem;
+  min-width: 48px;
+  text-align: center;
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.ts-footer {
+  background: var(--ts-dark);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 2.5rem 0 1.5rem;
+  margin-top: 4rem;
+}
+.ts-footer a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+.ts-footer a:hover { color: #fff; }
+
+/* ---- Animación de entrada ---- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.4s ease both; }
