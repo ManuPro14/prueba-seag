@@ -271,4 +271,4 @@ Gracias al contexto, cuando se agrega un producto el contador del `CartWidget` y
 
 ## 👤 Autor
 
-Desarrollado como prueba técnica de desarrollador React.
+Desarrollado como prueba técnica de desarrollador React por Manuel Barrios
